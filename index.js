@@ -56,11 +56,12 @@ async function question(readline) {
 
   let count = 10;
   const questArr = await getFiles(fileName());
+
   for (let i = 0; i < questArr.length; i += 1) {
     console.log(`${getQuestion(questArr, i)}`);
     const readlineAnswer = readlineSync.question('Ваш ответ: \n');
     if (readlineAnswer.toLowerCase() === getAnswer(questArr, i).toLowerCase()) {
-      console.log(`Это правильный ответ! ✅ Баллы - ${count - 10}\n`);
+      console.log(`Это правильный ответ! ✅ Баллы - ${count}\n`);
       count += 10;
     } else {
       console.log(
@@ -68,7 +69,7 @@ async function question(readline) {
       );
     }
   }
-  console.log(`Ты молодец! Всего ${count} балл(ов)\n`);
+  console.log(`Ты молодец! Всего ${count - 10} балл(ов)\n`);
 }
 
 question(readline);
